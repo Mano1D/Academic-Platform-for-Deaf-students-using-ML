@@ -1,0 +1,12 @@
+numpy==1.26.4
+opencv-python==4.13.0.90
+mediapipe==0.10.9
+scikit-learn==1.8.0
+SpeechRecognition==3.14.5
+PyAudio==0.2.14
+gTTS==2.5.4
+pygame==2.6.1
+PyQt5==5.15.11
+imageio==2.37.2
+moviepy==1.0.3
+tensorflow==2.15.0

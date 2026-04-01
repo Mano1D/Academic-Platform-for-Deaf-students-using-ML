@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "E:\Project\SignLanguagePrediction-feature-ai_skeleton_video\SignLanguagePrediction-feature-ai_skeleton_video\SignLangCompanion.py", line 240, in closeEvent
+    def closeEvent(self, event):
+    
+KeyboardInterrupt
