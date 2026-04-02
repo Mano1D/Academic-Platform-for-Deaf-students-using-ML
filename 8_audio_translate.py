@@ -102,7 +102,7 @@ class AudioTranslateWidget(QWidget):
         layout.addWidget(header)
 
         self.status_lbl = QLabel('Choose an option to begin')
-        self.status_lbl.setStyleSheet('color: #aaa; font-style: italic;')
+        self.status_lbl.setStyleSheet('color: #555; font-style: italic;')
         layout.addWidget(self.status_lbl)
 
         btn_lay = QHBoxLayout()
@@ -114,7 +114,7 @@ class AudioTranslateWidget(QWidget):
 
         self.upload_btn = QPushButton('UPLOAD AUDIO FILE')
         self.upload_btn.setFixedHeight(40)
-        self.upload_btn.setStyleSheet(f'background: #333; color: white; font-weight: bold; border-radius: 8px;')
+        self.upload_btn.setStyleSheet(f'background: #dddddd; color: black; font-weight: bold; border-radius: 8px;')
         self.upload_btn.clicked.connect(self.upload_audio)
         btn_lay.addWidget(self.upload_btn)
         

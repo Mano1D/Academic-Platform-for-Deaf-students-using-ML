@@ -37,9 +37,9 @@ except ImportError:
 
 # Accent matching 3_app_ui.py avatar border
 ACCENT   = "#00d7ff"
-BG_DARK  = "#1a1a1a"
-BG_PANEL = "#2b2b2b"
-BG_CARD  = "#222222"
+BG_DARK  = "#ffffff"
+BG_PANEL = "#f0f0f0"
+BG_CARD  = "#e8e8e8"
 
 # =============================================================================
 # MS-ASL JSON Cache — loaded once at startup, used as an on-demand fallback
@@ -843,10 +843,10 @@ class WordCard(QFrame):
         super().__init__()
         has_media = media_path is not None
         self.setFixedSize(160, 200)
-        border = ACCENT if has_media else "#3a3a3a"
-        bg     = "#1a2a1a" if has_media else BG_CARD
+        border = ACCENT if has_media else "#bbbbbb"
+        bg     = "#e0f0e0" if has_media else BG_CARD
         self.setStyleSheet(
-            f"QFrame {{ background-color: {bg}; border-radius: 8px; border: 2px solid {border}; }}"
+            f"QFrame {{ background-color: {BG_DARK}; border-radius: 8px; border: 2px solid {border}; }}"
         )
 
         layout = QVBoxLayout(self)
@@ -915,7 +915,7 @@ class WordCard(QFrame):
         word_lbl.setAlignment(Qt.AlignCenter)
         word_lbl.setWordWrap(True)
         word_lbl.setFont(QFont("Segoe UI", 10, QFont.Bold))
-        word_lbl.setStyleSheet("color: white; border: none;")
+        word_lbl.setStyleSheet("color: black; border: none;")
         layout.addWidget(word_lbl)
 
         status_lbl = QLabel("matched" if has_media else "text only")
@@ -937,7 +937,7 @@ class TranslatorWidget(QWidget):
     def __init__(self):
         super().__init__()
         self.setStyleSheet(
-            f"background-color: {BG_DARK}; color: white; font-family: Segoe UI, sans-serif;"
+            f"background-color: {BG_DARK}; color: black; font-family: Segoe UI, sans-serif;"
         )
 
         self.video_path           = None
@@ -960,6 +960,7 @@ class TranslatorWidget(QWidget):
         header = QLabel("Video to Sign Language Translator")
         header.setFont(QFont("Segoe UI", 16, QFont.Bold))
         header.setAlignment(Qt.AlignCenter)
+        header.setStyleSheet("color: black; background-color: white; padding: 8px;")
         root.addWidget(header)
 
         sep = QFrame()
@@ -973,7 +974,7 @@ class TranslatorWidget(QWidget):
 
         self.file_label = QLabel("No file selected")
         self.file_label.setStyleSheet(
-            f"background: {BG_PANEL}; padding: 8px 12px; border-radius: 8px; color: #aaaaaa;"
+            f"background: {BG_PANEL}; padding: 8px 12px; border-radius: 8px; color: #555555;"
         )
         self.file_label.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
         ctrl.addWidget(self.file_label)
@@ -1014,14 +1015,14 @@ class TranslatorWidget(QWidget):
         self.progress.setRange(0, 100)
         self.progress.setValue(0)
         self.progress.setStyleSheet(f"""
-            QProgressBar {{ background: #333333; border-radius: 3px; border: none; }}
+            QProgressBar {{ background: #dddddd; border-radius: 3px; border: none; }}
             QProgressBar::chunk {{ background: {ACCENT}; border-radius: 3px; }}
         """)
         root.addWidget(self.progress)
 
         self.status_lbl = QLabel("")
         self.status_lbl.setAlignment(Qt.AlignCenter)
-        self.status_lbl.setStyleSheet("color: #aaaaaa; font-size: 11px;")
+        self.status_lbl.setStyleSheet("color: #555555; font-size: 11px;")
         root.addWidget(self.status_lbl)
 
         # Main split: left = video | right = sign cards
@@ -1036,7 +1037,7 @@ class TranslatorWidget(QWidget):
         self.video_label.setMinimumSize(480, 300)
         self.video_label.setAlignment(Qt.AlignCenter)
         self.video_label.setStyleSheet(
-            "background: #000000; border-radius: 10px; color: #444444; font-size: 13px;"
+            "background: #dddddd; border-radius: 10px; color: #888888; font-size: 13px;"
         )
         left.addWidget(self.video_label, stretch=1)
 
@@ -1048,7 +1049,7 @@ class TranslatorWidget(QWidget):
         self.play_btn.setFixedHeight(30)
         self.play_btn.setFixedWidth(60)
         self.play_btn.setEnabled(False)
-        self.play_btn.setStyleSheet(self._btn("#333333", "#444444"))
+        self.play_btn.setStyleSheet(self._btn("#0057d9", "#0046b0"))
         self.play_btn.clicked.connect(self.toggle_play)
         transport.addWidget(self.play_btn)
 
@@ -1065,7 +1066,7 @@ class TranslatorWidget(QWidget):
         transport.addWidget(self.seek_slider, stretch=1)
 
         self.time_lbl = QLabel("0:00 / 0:00")
-        self.time_lbl.setStyleSheet("color: #aaaaaa; font-size: 11px;")
+        self.time_lbl.setStyleSheet("color: #555555; font-size: 11px;")
         transport.addWidget(self.time_lbl)
         left.addLayout(transport)
 
@@ -1076,7 +1077,7 @@ class TranslatorWidget(QWidget):
         self.transcript_lbl.setFixedHeight(55)
         self.transcript_lbl.setFont(QFont("Segoe UI", 11))
         self.transcript_lbl.setStyleSheet(
-            f"background: {BG_PANEL}; color: #cccccc; padding: 8px; border-radius: 10px;"
+            f"background: {BG_PANEL}; color: #333333; padding: 8px; border-radius: 10px;"
         )
         left.addWidget(self.transcript_lbl)
         main_area.addLayout(left, stretch=5)
@@ -1092,7 +1093,7 @@ class TranslatorWidget(QWidget):
         panel_header = QLabel("Sign Translations")
         panel_header.setFont(QFont("Segoe UI", 14, QFont.Bold))
         panel_header.setAlignment(Qt.AlignCenter)
-        panel_header.setStyleSheet(f"color: white;")
+        panel_header.setStyleSheet(f"color: black;")
         right_layout.addWidget(panel_header)
 
         # View Toggle
@@ -1103,13 +1104,13 @@ class TranslatorWidget(QWidget):
         
         self.radio_hybrid = QRadioButton("Hybrid (Real+AI)")
         self.radio_hybrid.setChecked(True)
-        self.radio_hybrid.setStyleSheet("color: white; font-size: 11px;")
+        self.radio_hybrid.setStyleSheet("color: black; font-size: 11px;")
         self.radio_hybrid.toggled.connect(lambda: self.switch_view("hybrid"))
         self.view_group.addButton(self.radio_hybrid)
         toggle_box.addWidget(self.radio_hybrid)
 
         self.radio_skel = QRadioButton("100% Skeleton (AI)")
-        self.radio_skel.setStyleSheet("color: white; font-size: 11px;")
+        self.radio_skel.setStyleSheet("color: black; font-size: 11px;")
         self.radio_skel.toggled.connect(lambda: self.switch_view("skeleton"))
         self.view_group.addButton(self.radio_skel)
         toggle_box.addWidget(self.radio_skel)
@@ -1141,7 +1142,7 @@ class TranslatorWidget(QWidget):
                 font-size: 12px; font-weight: bold; border: none;
             }}
             QPushButton:hover {{ background-color: {hover}; }}
-            QPushButton:disabled {{ background-color: #3a3a3a; color: #666666; }}
+            QPushButton:disabled {{ background-color: #cccccc; color: #999999; }}
         """
 
     @staticmethod

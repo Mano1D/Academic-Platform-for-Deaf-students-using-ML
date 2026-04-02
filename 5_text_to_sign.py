@@ -22,9 +22,9 @@ except ImportError:
     def asl_gloss_string(text): return text.upper()
 
 ACCENT   = '#00d7ff'
-BG_DARK  = '#1a1a1a'
-BG_PANEL = '#2b2b2b'
-BG_CARD  = '#222222'
+BG_DARK  = '#ffffff'
+BG_PANEL = '#f0f0f0'
+BG_CARD  = '#e8e8e8'
 
 def match_gifs(text):
     asl_tokens = english_to_asl(text)
@@ -110,7 +110,7 @@ class MediaLabel(QLabel):
         super().__init__()
         self.setFixedSize(140, 105)
         self.setAlignment(Qt.AlignCenter)
-        self.setStyleSheet("background: #000; border-radius: 4px; border: 1px solid #333;")
+        self.setStyleSheet("background: #e0e0e0;color: #888; border-radius: 4px; border: 1px solid #333;")
         self.movie = None
         self.frames = []
         self.timer = None
@@ -169,7 +169,7 @@ class WordCard(QFrame):
         word_lbl = QLabel(word.upper())
         word_lbl.setAlignment(Qt.AlignCenter)
         word_lbl.setFont(QFont('Segoe UI', 11, QFont.Bold))
-        word_lbl.setStyleSheet('color: white; border: none; margin-top: 5px;')
+        word_lbl.setStyleSheet('color: black; border: none; margin-top: 5px;')
         layout.addWidget(word_lbl)
 
 class TextTranslateWidget(QWidget):
@@ -181,7 +181,7 @@ class TextTranslateWidget(QWidget):
         header = QLabel('TEXT TO SIGN TRANSLATOR'); header.setFont(QFont('Segoe UI', 18, QFont.Bold)); header.setStyleSheet(f'color: {ACCENT};')
         layout.addWidget(header)
         self.input_box = QTextEdit(); self.input_box.setPlaceholderText('Type here...'); self.input_box.setFixedHeight(80)
-        self.input_box.setStyleSheet('background: #111; color: white; border: 1px solid #333; border-radius: 8px; padding: 10px;')
+        self.input_box.setStyleSheet('background: #f5f5f5; color: black; border: 1px solid #333; border-radius: 8px; padding: 10px;')
         layout.addWidget(self.input_box)
         btn_lay = QHBoxLayout()
         self.trans_btn = QPushButton('Translate'); self.trans_btn.setStyleSheet(f'background: {ACCENT}; color: black; font-weight: bold; height: 35px;')

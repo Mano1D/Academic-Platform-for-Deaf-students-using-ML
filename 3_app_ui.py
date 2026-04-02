@@ -154,7 +154,7 @@ class AvatarView(QLabel):
     def __init__(self):
         super().__init__()
         self.setFixedSize(200, 150)
-        self.setStyleSheet("background-color: #000; border: 2px solid #00d7ff; border-radius: 8px;")
+        self.setStyleSheet("background-color: white; border: 2px solid #00d7ff; border-radius: 8px;")
         self.setScaledContents(True)
         self.setAlignment(Qt.AlignCenter)
         self.movie = None
@@ -471,7 +471,7 @@ class AudioWorker(QThread):
 class CommunicatorWidget(QWidget):
     def __init__(self):
         super().__init__()
-        self.setStyleSheet("background-color: #1a1a1a; color: white; font-family: Segoe UI, sans-serif;")
+        self.setStyleSheet("background-color: white; color: black; font-family: Segoe UI, sans-serif;")
         
         # Core Layout
         main_layout = QHBoxLayout(self)
@@ -484,7 +484,7 @@ class CommunicatorWidget(QWidget):
         left_layout.setContentsMargins(0,0,0,0)
         
         self.video_label = QLabel()
-        self.video_label.setStyleSheet("background-color: #000; border-radius: 10px;")
+        self.video_label.setStyleSheet("background-color: white; border-radius: 10px;")
         self.video_label.setMinimumSize(640, 480)
         self.video_label.setAlignment(Qt.AlignCenter)
         
@@ -513,7 +513,7 @@ class CommunicatorWidget(QWidget):
         
         # --- RIGHT PANEL (Chat Bubbles) ---
         right_panel = QWidget()
-        right_panel.setStyleSheet("background-color: #2b2b2b; border-radius: 15px;")
+        right_panel.setStyleSheet("background-color: white; border-radius: 15px;")
         right_layout = QVBoxLayout(right_panel)
         
         header = QLabel("Communication History")
@@ -567,11 +567,11 @@ class CommunicatorWidget(QWidget):
         msg_label.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Minimum)
         
         if sender == "signer":
-            msg_label.setStyleSheet("background-color: #00882b; color: white; padding: 12px; border-radius: 12px;")
+            msg_label.setStyleSheet("background-color: white; color: black; padding: 12px; border-radius: 12px;")
             row_layout.addStretch()
             row_layout.addWidget(msg_label)
         elif sender == "hearing":
-            msg_label.setStyleSheet("background-color: #4a4a4a; color: white; padding: 12px; border-radius: 12px;")
+            msg_label.setStyleSheet("background-color: white; color: black; padding: 12px; border-radius: 12px;")
             row_layout.addWidget(msg_label)
             row_layout.addStretch()
         else:
